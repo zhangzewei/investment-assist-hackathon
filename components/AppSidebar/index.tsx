@@ -11,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useEffect, useState } from "react";
 
 // Menu items.
 const items = [
@@ -27,7 +28,10 @@ const items = [
 ]
 
 export function AppSidebar() {
-  const pathname = window.location.pathname;
+  const [pathname, setPathname] = useState('/');
+  useEffect(() => {
+    setPathname(window?.location.pathname);
+  }, [])
   return (
     <Sidebar>
       <SidebarContent>
