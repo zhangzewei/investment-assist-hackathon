@@ -5,8 +5,6 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
 export default function UploadHistory() {
-  const [file, setFile] = useState<File | null>(null);
-
   return <Card>
     <CardHeader>
       <CardTitle>Update Your Investment History</CardTitle>
@@ -18,7 +16,7 @@ export default function UploadHistory() {
       </div>
     </CardContent>
     <CardFooter>
-      <Button disabled={!file}>Upload</Button>
+      <Button>Upload</Button>
     </CardFooter>
   </Card>
 }
