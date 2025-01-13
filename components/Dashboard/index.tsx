@@ -111,6 +111,7 @@ export default function Dashboard({
       ]
     });
   }, []);
+
   return <div className='block p-5 space-y-5'>
     <h2 className='text-2xl font-bold'>Your investment be like</h2>
     <div className='min-h-[600px] h-1/2' ref={chartRef}></div>
