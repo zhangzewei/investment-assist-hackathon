@@ -7,7 +7,7 @@ import { Label } from "@radix-ui/react-label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
-export default function InvestTest() {
+export default function InvestTest({ onSubmit }: { onSubmit?: () => void }) {
   const tests = [{
     title: 'When your investment experiences a loss, your reaction is:',
     answers: [
@@ -70,11 +70,11 @@ export default function InvestTest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema)
   })
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  function handleSubmit(values: z.infer<typeof formSchema>) {
+    onSubmit && onSubmit();
   }
   return <Card>
-    <form onSubmit={form.handleSubmit(onSubmit)}>
+    <form onSubmit={form.handleSubmit(handleSubmit)}>
       <CardHeader>
         <CardTitle>Choose Your Invest Like</CardTitle>
       </CardHeader>
@@ -92,7 +92,7 @@ export default function InvestTest() {
                     <FormControl>
                       <RadioGroup {...field}>
                         {
-                          test.answers.map((answer, index) => (
+                          test.answers.map((answer) => (
                             <div key={`option-${answer}`} className="flex items-center space-x-2">
                               <RadioGroupItem value={answer} id={`option-${answer}`} />
                               <Label htmlFor={`option-${answer}`}>{answer}</Label>

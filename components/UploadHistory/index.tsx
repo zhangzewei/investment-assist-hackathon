@@ -4,7 +4,14 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
-export default function UploadHistory() {
+export default function UploadHistory({
+  onSubmit,
+}: {
+  onSubmit?: () => void;
+}) {
+  const handleSubmit = () => {
+    onSubmit && onSubmit();
+  }
   return <Card>
     <CardHeader>
       <CardTitle>Update Your Investment History</CardTitle>
@@ -16,7 +23,7 @@ export default function UploadHistory() {
       </div>
     </CardContent>
     <CardFooter>
-      <Button>Upload</Button>
+      <Button onClick={handleSubmit}>Upload</Button>
     </CardFooter>
   </Card>
 }
