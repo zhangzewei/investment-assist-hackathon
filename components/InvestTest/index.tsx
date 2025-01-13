@@ -71,7 +71,9 @@ export default function InvestTest({ onSubmit }: { onSubmit?: () => void }) {
     resolver: zodResolver(formSchema)
   })
   function handleSubmit(values: z.infer<typeof formSchema>) {
-    onSubmit && onSubmit();
+    if (onSubmit) {
+      onSubmit();
+    }
   }
   return <Card>
     <form onSubmit={form.handleSubmit(handleSubmit)}>
