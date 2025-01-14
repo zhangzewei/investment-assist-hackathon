@@ -3,6 +3,7 @@ import * as echarts from 'echarts';
 import { useEffect, useRef, useState } from 'react';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export type RiskLevel = 'Low' | 'Middle' | 'High' | 'Stable';
 
@@ -147,7 +148,7 @@ export default function Dashboard({
       }
     </div>
     <div className='mt-5 space-x-5'>
-      <Button disabled={!selectedProtocols.length}>Generate Your Intention</Button>
+      <Button disabled={!selectedProtocols.length}><Link href='/playground/report'>Generate Your Intention</Link></Button>
       <Button onClick={back} variant='outline'>Re-analysis</Button>
     </div>
   </div>
