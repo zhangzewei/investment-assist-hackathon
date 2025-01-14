@@ -21,7 +21,7 @@ export default function Playground() {
 	} = useRiskPreferenceStore((state) => state,);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const handleSubmit = async (value: Object) => {
+	const handleSubmit = async (value: object) => {
 		setLoading(true);
 		try {
 			const data = JSON.stringify(value);

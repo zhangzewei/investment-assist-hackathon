@@ -7,7 +7,7 @@ import { Label } from "@radix-ui/react-label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
-export default function InvestTest({ onSubmit }: { onSubmit?: (values: any) => void }) {
+export default function InvestTest({ onSubmit }: { onSubmit?: (values: object) => void }) {
   const tests = [{
     title: 'When your investment experiences a loss, your reaction is:',
     answers: [
