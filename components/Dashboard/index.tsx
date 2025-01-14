@@ -4,13 +4,21 @@ import { useEffect, useRef, useState } from 'react';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from '../ui/button';
 
+export type RiskLevel = 'Low' | 'Middle' | 'High' | 'Stable';
+
+export const levelColorStyle = {
+  Low: 'bg-green-100 text-green-800',
+  Middle: 'bg-yellow-100 text-yellow-800',
+  High: 'bg-red-100 text-red-800',
+  Stable: 'bg-blue-100 text-blue-800',
+}
+
 export default function Dashboard({
   back
 }: {
   back: () => void
 }) {
   const [selectedProtocols, setSelectedProtocols] = useState<string[]>([]);
-  type RiskLevel = 'Low' | 'Middle' | 'High' | 'Stable';
   const protocols = [{
     name: 'USDC/WETH',
     link: 'https://pancakeswap.finance/liquidity/pool/eth/0x1ac1A8FEaAEa1900C4166dEeed0C11cC10669D36',
@@ -39,12 +47,6 @@ export default function Dashboard({
     risk: 'Middle',
   }]
   const chartRef = useRef<HTMLDivElement>(null);
-  const levelColorStyle = {
-    Low: 'bg-green-100 text-green-800',
-    Middle: 'bg-yellow-100 text-yellow-800',
-    High: 'bg-red-100 text-red-800',
-    Stable: 'bg-blue-100 text-blue-800',
-  }
   useEffect(() => {
     if (!chartRef.current) return;
     const chart = echarts.init(chartRef.current);
