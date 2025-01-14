@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import Markdown from 'react-markdown'
 
 export type RiskLevel = 'Low' | 'Middle' | 'High' | 'Stable';
 
@@ -15,8 +16,10 @@ export const levelColorStyle = {
 }
 
 export default function Dashboard({
+  riskPreference,
   back
 }: {
+  riskPreference: string,
   back: () => void
 }) {
   const [selectedProtocols, setSelectedProtocols] = useState<string[]>([]);
@@ -116,7 +119,12 @@ export default function Dashboard({
   }, []);
 
   return <div className='block p-5 space-y-5'>
-    <h2 className='text-2xl font-bold'>Your investment be like</h2>
+    <h2 className='text-2xl font-bold'>Your Risk Preference</h2>
+    {
+      riskPreference && <div className='pb-5 leading-8'>
+        <Markdown>{riskPreference}</Markdown>
+      </div>
+    }
     <div className='min-h-[600px] h-1/2' ref={chartRef}></div>
     <h2 className='text-2xl font-bold'>Proposal Protocols</h2>
     <div className='space-y-5'>

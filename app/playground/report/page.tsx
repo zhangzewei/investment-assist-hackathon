@@ -2,9 +2,14 @@
 
 import Loading from "@/components/Loading";
 import ReportItem from "@/components/ReportItem"
+import { useRiskPreferenceStore } from "@/providers/RiskPreferenceProvider";
 import { useEffect, useState } from "react";
 
 export default function ReportPage() {
+  const {
+    riskPreference
+  } = useRiskPreferenceStore((state) => state);
+  console.log(riskPreference)
   const [islLoading, setIsLoading] = useState(true);
   const protocols = [{
     name: 'USDC/WETH',
@@ -27,8 +32,8 @@ export default function ReportPage() {
     risk: 'High',
     auditStatus: 'danger',
     auditReport: {
-      summary: 'There is no critical issue found in this protocol.',
-      details: 'There is no critical issue found in this'
+      summary: 'There are some critical issues found in this protocol.',
+      details: 'There are some critical issues found in this'
     },
     trendData: [25.2, 37.1, 41.2, 18, 33.9, 49.1]
   },

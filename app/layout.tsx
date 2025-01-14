@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { RiskPreferenceStoreProvider } from "@/providers/RiskPreferenceProvider";
 
 export const metadata: Metadata = {
   title: "investment-assist",
@@ -22,7 +23,9 @@ export default function RootLayout({
           <AppSidebar />
           <main className="w-full">
             <SidebarTrigger />
-            {children}
+            <RiskPreferenceStoreProvider>
+              {children}
+            </RiskPreferenceStoreProvider>
           </main>
         </SidebarProvider>
       </body>
